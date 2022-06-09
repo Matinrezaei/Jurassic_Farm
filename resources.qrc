@@ -1,0 +1,52 @@
+<RCC>
+    <qresource prefix="/">
+        <file>backgrounds/farm2.png</file>
+        <file>icons/time.png</file>
+        <file>icons/coins.png</file>
+        <file>icons/xp.png</file>
+        <file>icons/back.png</file>
+        <file>icons/forward.png</file>
+        <file>icons/up.png</file>
+        <file>backgrounds/storage.jpg</file>
+        <file>backgrounds/2.jpeg</file>
+        <file>backgrounds/3.jpeg</file>
+        <file>backgrounds/Rank.jpg</file>
+        <file>icons/1.ico</file>
+        <file>icons/rank.png</file>
+        <file>icons/2.ico</file>
+        <file>icons/3.ico</file>
+        <file>icons/back2.png</file>
+        <file>icons/back22.png</file>
+        <file>icons/egg.png</file>
+        <file>icons/egg2.png</file>
+        <file>icons/milk.png</file>
+        <file>icons/milk2.png</file>
+        <file>icons/nail.png</file>
+        <file>icons/shovel.png</file>
+        <file>icons/talk1.png</file>
+        <file>icons/upgrade.png</file>
+        <file>icons/upgrade2.png</file>
+        <file>icons/uplevel.png</file>
+        <file>icons/whool.png</file>
+        <file>icons/whool2.png</file>
+        <file>icons/yonje.png</file>
+        <file>gifs/dave.gif</file>
+        <file>gifs/pulp.gif</file>
+        <file>gifs/d3.gif</file>
+        <file>backgrounds/store.jpg</file>
+        <file>icons/Bill.png</file>
+        <file>icons/egg_.png</file>
+        <file>icons/Hen _osaurus.png</file>
+        <file>icons/milk_.png</file>
+        <file>icons/Sheep_osaurus.png</file>
+        <file>icons/Bill2.png</file>
+        <file>icons/egg_2.png</file>
+        <file>icons/Hen _osaurus2.png</file>
+        <file>icons/Mikh2.png</file>
+        <file>icons/milk_2.png</file>
+        <file>icons/Sheep_osaurus2.png</file>
+        <file>icons/Yon_last.jpg</file>
+        <file>icons/col_milk.jfif</file>
+        <file>icons/food_cow.jfif</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,1077 @@
+#include "store.h"
+#include <iostream>
+#include <QMovie>
+#include "ui_store.h"
+using namespace std;
+
+
+void Time(Data* _data, store* w){
+        QThread::sleep(1);
+       _data->AddTime(1);
+       QString str;
+
+       if(_data->getTime_build_aqol()>0)
+           _data->Add_build_aqol(-1);
+       if(_data->getTime_build_aqol()==0){
+            _data->getAqol()->setBuild(true);
+            _data->set_build_aqol(-1);
+            str = "Aqol build Successfully\n";
+            _data->Add_message(str,1);
+       }
+
+       if(_data->getTime_build_gav()>0)
+           _data->Add_build_gav(-1);
+       if(_data->getTime_build_gav()==0){
+           _data->set_build_gav(-1);
+           _data->getGav()->setBuild(true);
+           str = "Gavdari build Successfully\n";
+           _data->Add_message(str,1);
+       }
+
+       if(_data->getTime_build_morq()>0)
+           _data->Add_build_morq(-1);
+       if(_data->getTime_build_morq()==0){
+           _data->getMorq()->setBuild(true);
+           _data->set_build_morq(-1);
+           str = "Morqdari build Successfully\n";
+           _data->Add_message(str,1);
+       }
+
+       if(_data->getTime_build_yonje()>0)
+           _data->Add_build_yonje(-1);
+       if(_data->getTime_build_yonje()==0){
+           _data->set_build_yonje(-1);
+           _data->getYonjeLand()->setBuilds(true);
+           str = "Yonje land build Successfully\n";
+           _data->Add_message(str,7);
+       }
+
+       if(_data->getAqol()->get_Time()>0)
+           _data->getAqol()->Add_Time(-1);
+       if(_data->getAqol()->get_Time()==0){
+           _data->getAqol()->UpLevel();
+           _data->getAqol()->set_Time(-1);
+           str = "Aqol SUCCESSFULLY UPGRADED!\n Level: " + QString::number(_data->getAqol()->getLevel())
+                   + "\n New Area: " + QString::number(_data->getAqol()->getCapacity()) + "\n";
+           _data->Add_message(str,2);
+       }
+
+       if(_data->getAqol()->get_Time_food()>0)
+           _data->getAqol()->Add_Time_food(-1);
+       if(_data->getAqol()->get_Time_food()==0){
+           _data->getAqol()->setExist(true);
+           _data->getAqol()->setFood(false);
+           _data->getAqol()->set_Time_food(-1);
+           str = "The sheep_osarus are ready to be bred\n";
+           _data->Add_message(str,2);
+       }
+
+       if(_data->getGav()->get_Time()>0)
+           _data->getGav()->Add_Time(-1);
+       if(_data->getGav()->get_Time()==0){
+           _data->getGav()->UpLevel();
+           _data->getGav()->set_Time(-1);
+           str = "Gavdari SUCCESSFULLY UPGRADED!\n Level: " + QString::number(_data->getGav()->getLevel())
+                              + "\n New Area: " + QString::number(_data->getGav()->getCapacity()) + "\n";
+           _data->Add_message(str,3);
+       }
+
+       if(_data->getGav()->get_Time_food()>0)
+           _data->getGav()->Add_Time_food(-1);
+       if(_data->getGav()->get_Time_food()==0){
+           _data->getGav()->setExist(true);
+           _data->getGav()->setFood(false);
+           _data->getGav()->set_Time_food(-1);
+           str = "The cow_osarus are ready to be bred\n";
+           _data->Add_message(str,3);
+       }
+
+       if(_data->getMorq()->get_Time()>0)
+           _data->getMorq()->Add_Time(-1);
+       if(_data->getMorq()->get_Time()==0){
+           _data->getMorq()->UpLevel();
+           _data->getMorq()->set_Time(-1);
+           str = "Morqdari SUCCESSFULLY UPGRADED!\n Level: " + QString::number(_data->getMorq()->getLevel())
+                              + "\n New Area: " + QString::number(_data->getMorq()->getCapacity()) + "\n";
+           _data->Add_message(str,4);
+       }
+
+       if(_data->getMorq()->get_Time_food()>0)
+           _data->getMorq()->Add_Time_food(-1);
+       if(_data->getMorq()->get_Time_food()==0){
+           _data->getMorq()->setExist(true);
+           _data->getMorq()->setFood(false);
+           _data->getMorq()->set_Time_food(-1);
+           str = "The hen_osarus are ready to be bred\n";
+           _data->Add_message(str,4);
+       }
+
+       if(_data->getAnbar()->get_time()>0)
+           _data->getAnbar()->AddTime(-1);
+       if(_data->getAnbar()->get_time()==0){
+           _data->getAnbar()->UpLevel(2);
+           _data->getAnbar()->setTime(-1);
+           str = "STORAGE SUCCESSFULLY UPGRADED!\n Level: " + QString::fromLatin1(to_string(_data->getAnbar()->getLevel()))
+                   + "\n New Capacity: " + QString::fromLatin1(to_string(_data->getAnbar()->getCapacity())) + "\n";
+           _data->Add_message(str,5);
+       }
+
+       if(_data->getsilo()->get_time()>0)
+           _data->getsilo()->AddTime(-1);
+       if(_data->getsilo()->get_time()==0){
+           _data->getsilo()->UpLevel();
+           _data->getsilo()->setTime(-1);
+           str = "SILOO SUCCESSFULLY UPGRADED!\n Level: " + QString::fromLatin1(to_string(_data->getsilo()->getLevel()))
+                   + "\n New Capacity: " + QString::fromLatin1(to_string(_data->getsilo()->getCapacity())) + "\n";
+           _data->Add_message(str,6);
+       }
+
+       if(_data->getGandomLand()->get_time()>0)
+           _data->getGandomLand()->Add_Time(-1);
+       if(_data->getGandomLand()->get_time()==0){
+           _data->getGandomLand()->UpLevel();
+           _data->getGandomLand()->setTime(-1);
+           str = "Gandom land Level up Successfully\n";
+           _data->Add_message(str,7);
+       }
+
+
+       if(_data->getGandomLand()->get_time_work()>0)
+           _data->getGandomLand()->Add_Time_work(-1);
+       if(_data->getGandomLand()->get_time_work()==0){
+           _data->getGandomLand()->setKesht(false);
+           _data->getGandomLand()->setTime_work(-1);
+           str = "Gandom Land is Ready to Bardasht!!!!\n";
+           _data->Add_message(str,7);
+       }
+
+       if(_data->getGandomLand()->get_time_work()>0)
+           _data->getGandomLand()->Add_Time_work(-1);
+       if(_data->getGandomLand()->get_time_work()==0){
+           _data->getGandomLand()->setKesht(false);
+           _data->getGandomLand()->setTime_work(-1);
+           str = "Gandom Land is Ready to Bardasht!!!!\n";
+           _data->Add_message(str,7);
+           _data->done(1);
+       }
+
+       if(_data->getYonjeLand()->get_time()>0)
+           _data->getYonjeLand()->Add_Time(-1);
+       if(_data->getYonjeLand()->get_time()==0){
+           _data->getYonjeLand()->UpLevel();
+           _data->getYonjeLand()->setTime(-1);
+           str = "Yonje Land SUCCESSFULLY UPGRADED!\n Level: " + QString::number(_data->getYonjeLand()->getLevel())
+                   + "\n New Area: " + QString::number(_data->getYonjeLand()->getArea()) + "\n";
+           _data->Add_message(str,8);
+       }
+
+       if(_data->getYonjeLand()->get_time_work()>0)
+                  _data->getYonjeLand()->Add_Time_work(-1);
+              if(_data->getYonjeLand()->get_time_work()==0){
+                  _data->getYonjeLand()->setTime_work(-1);
+                  if(_data->getYonjeLand()->isShokhm()){
+                      str = "Yonje land was successfully plowed\n";
+                      _data->getYonjeLand()->setShokhm(false);
+                      _data->Add_message(str,8);
+                      _data->shokhm();
+                  }
+                  else{
+                      _data->getYonjeLand()->setKesht(false);
+                      _data->getYonjeLand()->setBardasht(false);
+                      str = "Yonje was successfully cultivated\n";
+                      _data->Add_message(str,8);
+                      _data->done(2);
+                  }
+              }
+
+
+    if(_data->getTime()>=60){
+        _data->nextDay(2);
+        _data->setTime(0);
+        str += "1 day passed! we are in Tomorrow!!";
+        _data->Add_message(str,0);
+    }
+
+    return Time(_data,w);
+}
+
+store::store(QWidget *parent, Data* _data) :
+    QWidget(parent),
+    ui(new Ui::store)
+{
+    data=_data;
+    i=0;
+    counter = 0;
+    milk = new QPushButton(this);
+    cow= new QPushButton(this);
+    hen = new QPushButton(this);
+    sheep = new QPushButton(this);
+    egg = new QPushButton(this);
+    pashm = new QPushButton(this);
+    gandom = new QPushButton(this);
+    yonje = new QPushButton(this);
+    bil = new QPushButton(this);
+    mikh = new QPushButton(this);
+
+
+    milk->setStyleSheet("QPushButton {border-image:url(:icons/milk_.png);}"
+"                           QPushButton::hover{border-image:url(:icons/milk_2.png);} ");
+
+    cow->setStyleSheet("QPushButton {border-image:url(:icons/cow_osaurus.jpg);}"
+"                           QPushButton::hover{border-image:url(:icons/cow_osaurus2.jpg);} ");
+
+    hen->setStyleSheet("QPushButton {border-image:url(:icons/Hen _osaurus.png);}"
+"                           QPushButton::hover{border-image:url(:icons/Hen _osaurus2.png);} ");
+
+    sheep->setStyleSheet("QPushButton {border-image:url(:icons/Sheep_osaurus.png);}"
+"                           QPushButton::hover{border-image:url(:icons/Sheep_osaurus2.png);} ");
+
+    egg->setStyleSheet("QPushButton {border-image:url(:icons/egg_.png);}"
+"                           QPushButton::hover{border-image:url(:icons/egg_2.png);} ");
+
+    pashm->setStyleSheet("QPushButton {border-image:url(:icons/Pashm.png);}"
+"                           QPushButton::hover{border-image:url(:icons/Pashm2.png);} ");
+
+    bil->setStyleSheet("QPushButton {border-image:url(:icons/Bill.png);}"
+"                           QPushButton::hover{border-image:url(:icons/Bill2.png);} ");
+
+    mikh->setStyleSheet("QPushButton {border-image:url(:icons/Mikh.png);}"
+"                           QPushButton::hover{border-image:url(:icons/Mikh2.png);} ");
+
+    gandom->setStyleSheet("QPushButton {border-image:url(:icons/gandom.png);}"
+"                           QPushButton::hover{border-image:url(:icons/gandom2.png);} ");
+
+    yonje->setStyleSheet("QPushButton {border-image:url(:icons/Yon.png);}"
+"                           QPushButton::hover{border-image:url(:icons/Yon2.png);} ");
+
+    coins = new QLabel(this);
+    coins->setMinimumHeight(200);
+    coins->setMinimumWidth(200);
+    coins->setMaximumHeight(200);
+    coins->setMaximumWidth(200);
+    coins->move(900, 55);
+    coins->setHidden(true);
+    coins->setStyleSheet("QLabel {border-image:url(:icons/coins_.png);}");
+
+    go_back = new QPushButton(this);
+    go_back->setMinimumHeight(90);
+    go_back->setMinimumWidth(90);
+    go_back->setMaximumHeight(90);
+    go_back->setMaximumWidth(90);
+    go_back->move(20, 40);
+    go_back->setStyleSheet("QPushButton {border-image:url(:icons/back2.png);}"
+"                           QPushButton::hover{border-image:url(:icons/back22.png);} ");
+    go_back->setToolTip("back to map");
+    go_back->setHidden(true);
+
+    milk->setMinimumHeight(90);
+        milk->setMinimumWidth(90);
+        milk->setMaximumHeight(90);
+        milk->setMaximumWidth(90);
+        milk->move(180, 460);
+        milk->setToolTip("Milk: "+QString::fromLatin1(to_string(data->getAnbar()->getMilk())));
+        milk->setHidden(true);
+
+
+        cow->setMinimumHeight(90);
+        cow->setMinimumWidth(90);
+        cow->setMaximumHeight(90);
+        cow->setMaximumWidth(90);
+        cow->move(550, 460);
+        cow->setToolTip("cow_osaurus: "+QString::fromLatin1(to_string(data->getGav()->getCount())));
+        cow->setHidden(true);
+
+        egg->setMinimumHeight(90);
+        egg->setMinimumWidth(90);
+        egg->setMaximumHeight(90);
+        egg->setMaximumWidth(90);
+        egg->move(180, 340);
+        egg->setToolTip("egg: "+QString::fromLatin1(to_string(data->getAnbar()->getEgg())));
+        egg->setHidden(true);
+
+        hen->setMinimumHeight(90);
+        hen->setMinimumWidth(90);
+        hen->setMaximumHeight(90);
+        hen->setMaximumWidth(90);
+        hen->move(550, 340);
+        hen->setToolTip("Hen_osaurus: "+QString::fromLatin1(to_string(data->getMorq()->getCount())));
+        hen->setHidden(true);
+
+        pashm->setMinimumHeight(90);
+        pashm->setMinimumWidth(90);
+        pashm->setMaximumHeight(90);
+        pashm->setMaximumWidth(90);
+        pashm->move(180, 600);
+        pashm->setToolTip("Pashm: "+QString::fromLatin1(to_string(data->getAnbar()->getPashm())));
+        pashm->setHidden(true);
+
+        sheep->setMinimumHeight(90);
+        sheep->setMinimumWidth(90);
+        sheep->setMaximumHeight(90);
+        sheep->setMaximumWidth(90);
+        sheep->move(550, 600);
+        sheep->setToolTip("Sheep_osaurus: "+QString::fromLatin1(to_string(data->getAqol()->getCount())));
+        sheep->setHidden(true);
+
+        gandom->setMinimumHeight(90);
+        gandom->setMinimumWidth(90);
+        gandom->setMaximumHeight(90);
+        gandom->setMaximumWidth(90);
+        gandom->move(180, 200);
+        gandom->setToolTip("Gandom: "+QString::fromLatin1(to_string(data->getsilo()->getCount())));
+        gandom->setHidden(true);
+
+        yonje->setMinimumHeight(90);
+        yonje->setMinimumWidth(90);
+        yonje->setMaximumHeight(90);
+        yonje->setMaximumWidth(90);
+        yonje->move(550, 200);
+        yonje->setToolTip("Yonje: "+QString::fromLatin1(to_string(data->getAnbar()->getYonje())));
+        yonje->setHidden(true);
+
+        bil->setMinimumHeight(90);
+        bil->setMinimumWidth(90);
+        bil->setMaximumHeight(90);
+        bil->setMaximumWidth(90);
+        bil->move(180, 40);
+        bil->setToolTip("Bill: "+QString::fromLatin1(to_string(data->getAnbar()->getBil())));
+        bil->setHidden(true);
+
+        mikh->setMinimumHeight(90);
+        mikh->setMinimumWidth(90);
+        mikh->setMaximumHeight(90);
+        mikh->setMaximumWidth(90);
+        mikh->move(550, 40);
+        mikh->setToolTip("Mikh: "+QString::fromLatin1(to_string(data->getAnbar()->getMikh())));
+        mikh->setHidden(true);
+
+    this->setMinimumHeight(768);
+    this->setMinimumWidth(1366);
+    this->setMaximumHeight(768);
+    this->setMaximumWidth(1366);
+    setAutoFillBackground(true);
+    QPixmap pixmap=QPixmap(":backgrounds/store.jpg").scaled(this->size());
+    QPalette palette(this->palette());
+    palette.setBrush(this->backgroundRole(),QBrush(pixmap.scaled(this->size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
+    this->setPalette(palette);
+
+    ui->setupUi(this);
+    ui->gandom->move(155,270);
+    ui->bill->move(155,110);
+    ui->yonje->move(460,270);
+    ui->mikh->move(510,110);
+    ui->egg->move(95,400);
+    ui->hen->move(470,400);
+    ui->milk->move(95,520);
+    ui->cow->move(475,520);
+    ui->pashm->move(95,670);
+    ui->sheep->move(465,670);
+
+    ui->gandom->setAlignment(Qt::AlignCenter);
+    ui->bill->setAlignment(Qt::AlignCenter);
+    ui->yonje->setAlignment(Qt::AlignCenter);
+    ui->mikh->setAlignment(Qt::AlignCenter);
+    ui->egg->setAlignment(Qt::AlignCenter);
+    ui->hen->setAlignment(Qt::AlignCenter);
+    ui->milk->setAlignment(Qt::AlignCenter);
+    ui->cow->setAlignment(Qt::AlignCenter);
+    ui->pashm->setAlignment(Qt::AlignCenter);
+    ui->sheep->setAlignment(Qt::AlignCenter);
+
+    ui->egg->setHidden(true);
+        ui->milk->setHidden(true);
+        ui->hen->setHidden(true);
+        ui->cow->setHidden(true);
+        ui->pashm->setHidden(true);
+        ui->sheep->setHidden(true);
+        ui->gandom->setHidden(true);
+        ui->yonje->setHidden(true);
+        ui->bill->setHidden(true);
+        ui->mikh->setHidden(true);
+
+        ui->egg->setFixedSize(ui->hen->size());
+        ui->pashm->setFixedSize(ui->hen->size());
+        ui->milk->setFixedSize(ui->hen->size());
+        ui->yonje->setFixedSize(ui->hen->size());
+
+    connect(go_back,SIGNAL(clicked()),this,SLOT(map_menu()));
+    connect(milk,SIGNAL(clicked()),this,SLOT(milk_()));
+    connect(egg,SIGNAL(clicked()),this,SLOT(egg_()));
+    connect(cow,SIGNAL(clicked()),this,SLOT(cow_()));
+    connect(hen,SIGNAL(clicked()),this,SLOT(hen_()));
+    connect(sheep,SIGNAL(clicked()),this,SLOT(sheep_()));
+    connect(pashm,SIGNAL(clicked()),this,SLOT(pashm_()));
+    connect(bil,SIGNAL(clicked()),this,SLOT(bill_()));
+    connect(mikh,SIGNAL(clicked()),this,SLOT(mikh_()));
+    connect(yonje,SIGNAL(clicked()),this,SLOT(yonje_()));
+    connect(gandom,SIGNAL(clicked()),this,SLOT(gandom_()));
+    connect(ui->buy,SIGNAL(clicked()),this,SLOT(check_buy()));
+    connect(ui->sell,SIGNAL(clicked()),this,SLOT(check_sell()));
+
+    ui->buy->setHidden(true);
+    ui->sell->setHidden(true);
+    ui->label->setHidden(true);
+    ui->number->setHidden(true);
+
+    tm=new QTimer;
+    tm->start();
+    tm->setInterval(3000);
+    connect(tm,SIGNAL(timeout()),this,SLOT(show2()));
+
+    ui->number->setGeometry(860,380,90,50);
+    ui->sell->setGeometry(970,390,100,30);
+    ui->buy->setGeometry(1080,390,100,30);
+    ui->label->setGeometry(970,500,150,100);
+
+    ui->co->setText("X" +QString::fromLatin1(to_string(data->getCoin())));
+    ui->co->move(1100,120);
+    ui->co->setFixedSize(250,60);
+    ui->co->setHidden(true);
+
+    t = QThread::create(Time,data,this);
+        t->start();
+
+}
+
+void store::show2(){
+    QPixmap pixmap=QPixmap(":backgrounds/store2.jpg").scaled(this->size());
+    QPalette palette(this->palette());
+    palette.setBrush(this->backgroundRole(),QBrush(pixmap.scaled(this->size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation)));
+    this->setPalette(palette);
+    if(counter==0){
+        tm1=new QTimer;
+        tm1->start();
+        tm1->setInterval(500);
+        connect(tm1,SIGNAL(timeout()),this,SLOT(show3()));
+    }
+
+    movie = new QMovie(":gifs/d1.gif");
+    label = new QLabel(this);
+    label->move(30,600);
+    if (!movie->isValid())
+        {
+            label->setText("mammad");
+        }
+        else{
+            label->setMovie(movie);
+            movie->start();
+        }
+}
+
+void store::show3(){
+    QFont f = ui->mikh->font();
+    f.setPointSize(14);
+    counter++;
+    if(counter==4){
+        if(!data->getGav()->isBuild()){
+            milk->setStyleSheet("QPushButton {border-image:url(:icons/milk_3.png);}");
+            cow->setStyleSheet("QPushButton {border-image:url(:icons/cow_osaurus3.jpg);}");
+            ui->milk->setFont(f);
+            ui->milk->setStyleSheet("color: #00FFFF");
+            ui->cow->setFont(f);
+            ui->cow->setStyleSheet("color: #00FFFF");
+            if(data->getLevel()<4){
+                ui->milk->setText("Locked(Level 4)");
+                ui->cow->setText("Locked(Level 4)");
+            }
+            else{
+                ui->milk->setText("Locked(Not Build)");
+                ui->cow->setText("Locked(Not Build)");
+            }
+            milk->setEnabled(false);
+            cow->setEnabled(false);
+        }
+        milk->setHidden(false);
+        cow->setHidden(false);
+        ui->milk->setHidden(false);
+        ui->cow->setHidden(false);
+    }
+    else if(counter==3){
+        if(!data->getMorq()->isBuild()){
+            egg->setStyleSheet("QPushButton {border-image:url(:icons/egg_3.png);}");
+            hen->setStyleSheet("QPushButton {border-image:url(:icons/Hen _osaurus3.png);}");
+            ui->egg->setFont(f);
+            ui->egg->setStyleSheet("color: #00FFFF");
+            ui->hen->setFont(f);
+            ui->hen->setStyleSheet("color: #00FFFF");
+            if(data->getLevel()<2){
+                ui->egg->setText("Locked(Level 2)");
+                ui->hen->setText("Locked(Level 2)");
+            }
+            else{
+                ui->egg->setText("Locked(Not Build)");
+                ui->hen->setText("Locked(Not Build)");
+            }
+            egg->setEnabled(false);
+            hen->setEnabled(false);
+        }
+        egg->setHidden(false);
+        hen->setHidden(false);
+        ui->egg->setHidden(false);
+        ui->hen->setHidden(false);
+    }
+    else if(counter==5){
+        if(!data->getGav()->isBuild()){
+            pashm->setStyleSheet("QPushButton {border-image:url(:icons/Pashm3.png);}");
+            sheep->setStyleSheet("QPushButton {border-image:url(:icons/Sheep_osaurus3.png);}");
+            ui->pashm->setFont(f);
+            ui->pashm->setStyleSheet("color: #00FFFF");
+            ui->sheep->setFont(f);
+            ui->sheep->setStyleSheet("color: #00FFFF");
+            if(data->getLevel()<6){
+                ui->pashm->setText("Locked(Level 6)");
+                ui->sheep->setText("Locked(Level 6)");
+            }
+            else{
+                ui->pashm->setText("Locked(Not Build)");
+                ui->sheep->setText("Locked(Not Build)");
+            }
+            pashm->setEnabled(false);
+            sheep->setEnabled(false);
+        }
+        pashm->setHidden(false);
+        sheep->setHidden(false);
+        ui->pashm->setHidden(false);
+        ui->sheep->setHidden(false);
+    }
+    else if(counter==2){
+        if(!data->getGav()->isBuild()){
+            yonje->setStyleSheet("QPushButton {border-image:url(:icons/Yon3.png);}");
+            ui->yonje->setFont(f);
+            ui->yonje->setStyleSheet("color: #00FFFF");
+            if(data->getLevel()<3)
+                ui->yonje->setText("Locked(Level 3)");
+            else
+                ui->yonje->setText("Locked(Not Build)");
+            yonje->setEnabled(false);
+        }
+        gandom->setHidden(false);
+        yonje->setHidden(false);
+        ui->gandom->setHidden(false);
+        ui->yonje->setHidden(false);
+    }
+    else if(counter==1){
+        bil->setHidden(false);
+        mikh->setHidden(false);
+        ui->bill->setHidden(false);
+        ui->mikh->setHidden(false);
+    }
+    else if(counter==6){
+        go_back->setHidden(false);
+        ui->co->setHidden(false);
+        coins->setHidden(false);
+    }
+}
+
+void store::check_buy(){
+    QString str;
+    if(!ui->number->text().isEmpty() && ui->number->value()!=0){
+        int num = ui->number->value();
+        if(i==1){
+            str = "you can not Buy Milk";
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getMilk())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==2){
+            if(num<=data->getAnbar()->getSpace()){
+                if(data->getCoin()>=num*70){
+                    data->getGav()->operator+=(num);
+                    str = QString::fromLatin1(to_string(num))+" cow-osarus Successfully purchased";
+                    data->addExp(num*10);
+                    data->operator-=(num*70);
+                }
+                else{
+                    QString s= "  Required: " + QString::fromLatin1(to_string(num*70)),k="No enough coins\n Mojoodi: "
+                    +QString::fromLatin1(to_string(data->getCoin()));
+                    str = k  + s;
+                }
+            }
+            else
+                str = "No enough Space";
+                ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getGav()->getCount())) + "\n\nSpace: "+
+                                   QString::fromLatin1(to_string(data->getGav()->getSpace())));
+
+        }
+        else if(i==3){
+            str = "you can not Buy Egg";
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getEgg())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==4){
+            if(num<=data->getGav()->getSpace()){
+                if(data->getCoin()>=num*20){
+                    data->getMorq()->operator+=(num);
+                    str = QString::fromLatin1(to_string(num))+" hen-osarus Successfully purchased";
+                    data->addExp(num*5);
+                    data->operator-=(num*20);
+                }
+                else{
+                    QString s= "  Required: " + QString::fromLatin1(to_string(num*20)),k="No enough coins\n Mojoodi: "
+                    +QString::fromLatin1(to_string(data->getCoin()));
+                    str = k  + s;
+                }
+            }
+            else
+                str = "No enough Space";
+                ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getMorq()->getCount())) + "\n\nSpace: "+
+                                   QString::fromLatin1(to_string(data->getMorq()->getSpace())));
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getMorq()->getCount())) + "\n\nSpace: "+
+                                       QString::fromLatin1(to_string(data->getMorq()->getSpace())));
+        }
+        else if(i==5){
+            str = "you can not Buy Pashm";
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getPashm())) + "\n\nSpace: "+
+                                       QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==6){
+            if(num<=data->getAqol()->getSpace()){
+                if(data->getCoin()>=num*80){
+                    data->getAqol()->operator+=(num);
+                    str = QString::fromLatin1(to_string(num))+" Sheep-osarus Successfully purchased";
+                    data->addExp(num*15);
+                    data->operator-=(num*80);
+                }
+                else{
+                    QString s= "  Required: " + QString::fromLatin1(to_string(num*80)),k="No enough coins\n Mojoodi: "
+                    +QString::fromLatin1(to_string(data->getCoin()));
+                    str = k  + s;
+                }
+            }
+            else
+                            str = "No enough Space";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAqol()->getCount())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAqol()->getSpace())));
+        }
+        else if(i==7){
+            if(num<=data->getsilo()->getSpace()){
+                           if(data->getCoin()>=num*3){
+                               data->getsilo()->operator+=(num);
+                               str = QString::fromLatin1(to_string(num))+" gandom Successfully purchased";
+                               data->addExp(num);
+                               data->operator-=(num*3);
+                           }
+                           else{
+                               QString s= "  Required: " + QString::fromLatin1(to_string(num*3)),k="No enough coins\n Mojoodi: "
+                               +QString::fromLatin1(to_string(data->getCoin()));
+                               str = k  + s;
+                           }
+            }
+            else
+                            str = "No enough Space";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getsilo()->getCount())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getsilo()->getSpace())));
+        }
+        else if(i==8){
+            if(num<=data->getAnbar()->getSpace()){
+                           if(data->getCoin()>=num*6){
+                               data->getAnbar()->ChangeYonje(num);
+                               str = QString::fromLatin1(to_string(num))+" Yonje Successfully purchased";
+                               data->addExp(num*2);
+                               data->operator-=(num*6);
+                           }
+                           else{
+                               QString s= "  Required: " + QString::fromLatin1(to_string(num*6)),k="No enough coins\n Mojoodi: "
+                               +QString::fromLatin1(to_string(data->getCoin()));
+                               str = k  + s;
+                           }
+            }
+            else
+                            str = "No enough Space";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getYonje())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==9){
+            if(num<data->getAnbar()->getSpace()){
+            if(data->getCoin()>=num*50){
+                data->getAnbar()->ChangeBil(num);
+                str = QString::fromLatin1(to_string(num))+" Bill Successfully purchased";
+                data->addExp(num*8);
+                data->operator-=(num*50);
+            }
+            else{
+                QString s= "  Required: " + QString::fromLatin1(to_string(num*50)),k="No enough coins\n Mojoodi: "
+                +QString::fromLatin1(to_string(data->getCoin()));
+                str = k  + s;
+            }
+            }
+            else
+                            str = "No enough Space";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getBil())) + "\n\nSpace: " +
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==10){
+            if(num<data->getAnbar()->getSpace()){
+                           if(data->getCoin()>=num*30){
+                               data->getAnbar()->ChangeMikh(num);
+                               str = QString::fromLatin1(to_string(num))+" Mikh Successfully purchased";
+                               data->addExp(num*4);
+                               data->operator-=(num*30);
+                           }
+                           else{
+                               QString s= "  Required: " + QString::fromLatin1(to_string(num*30)),k="No enough coins\n Mojoodi: "
+                               +QString::fromLatin1(to_string(data->getCoin()));
+                               str = k  + s;
+                           }
+            }
+            else
+                            str = "No enough Space";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getMikh())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        ui->co->setText("X" +QString::number(data->getCoin()));
+        ui->number->setValue(0);
+        msg* payam = new msg(nullptr,&str);
+        payam->show();
+    }
+}
+
+void store::check_sell(){
+    QString str;
+    if(!ui->number->text().isEmpty() && ui->number->value()!=0){
+        int num = ui->number->value();
+        if(i==1){
+            if(num<=data->getAnbar()->getMilk()){
+               for(int j=0; j < num ; data->RemvoMilk(), j++);
+               str = QString::fromLatin1(to_string(num))+" Milk Sold successfully";
+               data->addExp(6);
+               data->operator+=(12*num);
+            }
+            else{
+                str = "Insufficient inventory";
+            }
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getMilk())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==2){
+            if(num<=data->getGav()->getCount()){
+               data->getGav()->operator-=(num);
+               str = QString::fromLatin1(to_string(num))+" cow-osarus Sold successfully";
+               data->addExp(6);
+               data->operator+=(50*num);
+            }
+            else{
+                str = "Insufficient inventory";
+            }
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getGav()->getCount())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getGav()->getSpace())));
+        }
+        else if(i==3){
+            if(num<=data->getAnbar()->getEgg()){
+               data->getAnbar()->ChangeEgg(-1*num);
+               str = QString::fromLatin1(to_string(num))+" egg Sold successfully";
+               data->addExp(6);
+               data->operator+=(8*num);
+            }
+            else{
+                str = "Insufficient inventory";
+            }
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getEgg())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==4){
+            if(num<=data->getMorq()->getCount()){
+               data->getMorq()->operator-=(num);
+               str = QString::fromLatin1(to_string(num))+" hen-osarus Sold successfully";
+               data->addExp(6);
+               data->operator+=(15*num);
+            }
+            else
+                str = "Insufficient inventory";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getMorq()->getCount())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getMorq()->getSpace())));
+        }
+        else if(i==5){
+            if(num<=data->getAnbar()->getPashm()){
+               data->getAnbar()->ChangePashm(-1*num);
+               str = QString::fromLatin1(to_string(num))+" Pashm Sold successfully";
+               data->addExp(6);
+               data->operator+=(23*num);
+            }
+            else
+                str = "Insufficient inventory";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getPashm())) + "\n\nSpace: "+
+                                       QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==6){
+            if(num<=data->getAqol()->getCount()){
+               data->getAqol()->operator-=(num);
+               str = QString::fromLatin1(to_string(num))+" Sheep-osarus Sold successfully";
+               data->addExp(6);
+               data->operator+=(70*num);
+            }
+            else
+                str = "Insufficient inventory";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAqol()->getCount())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAqol()->getSpace())));
+        }
+        else if(i==7){
+            if(num<=data->getsilo()->getCount()){
+               data->getsilo()->operator-=(num);
+               str = QString::fromLatin1(to_string(num))+" gandom Sold successfully";
+               data->addExp(6);
+               data->operator+=(2*num);
+            }
+            else
+                str = "Insufficient inventory";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getsilo()->getCount())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getsilo()->getSpace())));
+        }
+        else if(i==8){
+            if(num<=data->getAnbar()->getYonje()){
+               data->getAnbar()->ChangeYonje(-1*num);
+               str = QString::fromLatin1(to_string(num))+" Yonje Sold successfully";
+               data->addExp(6);
+               data->operator+=(4*num);
+            }
+            else
+                str = "Insufficient inventory";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getYonje())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==9){
+            if(num<=data->getAnbar()->getBil()){
+               data->getAnbar()->ChangeBil(-1*num);
+               str = QString::fromLatin1(to_string(num))+" bill Sold successfully";
+               data->addExp(6);
+               data->operator+=(30*num);
+            }
+            else
+                str = "Insufficient inventory";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getBil())) + "\n\nSpace: " +
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        else if(i==10){
+            if(num<=data->getAnbar()->getMikh()){
+               data->getAnbar()->ChangeMikh(-1*num);
+               str = QString::fromLatin1(to_string(num))+" mikh Sold successfully";
+               data->addExp(6);
+               data->operator+=(20*num);
+            }
+            str = "Insufficient inventory";
+
+            ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getMikh())) + "\n\nSpace: "+
+                               QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+        }
+        ui->co->setText("X" +QString::number(data->getCoin()));
+        ui->number->setValue(0);
+        msg* payam = new msg(nullptr,&str);
+        payam->show();
+    }
+}
+
+void store::milk_(){
+    if(i!=1){
+        i=1;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getMilk())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::cow_(){
+    if(i!=2){
+        i=2;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getGav()->getCount())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getGav()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::pashm_(){
+    if(i!=5){
+        i=5;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getPashm())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::hen_(){
+    if(i!=4){
+        i=4;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getMorq()->getCount())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getMorq()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::egg_(){
+    if(i!=3){
+        i=3;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getEgg())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::sheep_(){
+    if(i!=6){
+        i=6;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAqol()->getCount())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getAqol()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::bill_(){
+    if(i!=9){
+        i=9;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getBil())) + "\n\nSpace: " +
+                           QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::mikh_(){
+    if(i!=10){
+        i=10;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getMikh())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::yonje_(){
+    if(i!=8){
+        i=8;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getAnbar()->getYonje())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getAnbar()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::gandom_(){
+    if(i!=7){
+        i=7;
+        ui->number->setHidden(false);
+        ui->buy->setHidden(false);
+        ui->sell->setHidden(false);
+        ui->label->setHidden(false);
+        ui->label->setText("Mojoodi: "+ QString::fromLatin1(to_string(data->getsilo()->getCount())) + "\n\nSpace: "+
+                           QString::fromLatin1(to_string(data->getsilo()->getSpace())));
+    }
+    else{
+        i=0;
+        ui->number->setHidden(true);
+        ui->buy->setHidden(true);
+        ui->sell->setHidden(true);
+        ui->label->setHidden(true);
+    }
+}
+
+void store::map_menu(){
+    Widget* temp = new Widget(nullptr, data);
+    temp->showFullScreen();
+    t->terminate();
+    this->destroy();
+}
+
+store::~store()
+{
+    delete ui;
+}
